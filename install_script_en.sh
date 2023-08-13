@@ -19,7 +19,7 @@ init_var() {
   # Docker
   DOCKER_MIRROR='"https://hub-mirror.c.163.com","https://ccr.ccs.tencentyun.com","https://mirror.baidubce.com","https://dockerproxy.com"'
 
-  # 项目目录
+  # project directory
   TP_DATA="/tpdata/"
 
   STATIC_HTML="https://github.com/trojanpanel/install-script/releases/download/v1.0.0/html.tar.gz"
@@ -66,7 +66,7 @@ init_var() {
   redis_port=6378
   redis_pass=""
 
-  # Trojan Panel前端
+  # Trojan Panel Fron-tend
   TROJAN_PANEL_UI_DATA="/tpdata/trojan-panel-ui/"
   # Nginx
   UI_NGINX_DATA="${TROJAN_PANEL_UI_DATA}nginx/"
@@ -76,7 +76,7 @@ init_var() {
   trojan_panel_ip="127.0.0.1"
   trojan_panel_server_port=8081
 
-  # Trojan Panel后端
+  # Trojan Panel back-tend
   TROJAN_PANEL_DATA="/tpdata/trojan-panel/"
   TROJAN_PANEL_WEBFILE="${TROJAN_PANEL_DATA}webfile/"
   TROJAN_PANEL_LOGS="${TROJAN_PANEL_DATA}logs/"
@@ -84,7 +84,7 @@ init_var() {
   trojan_panel_config_path="${TROJAN_PANEL_DATA}config/config.ini"
   trojan_panel_port=8081
 
-  # Trojan Panel内核
+  # Trojan Panel kernel
   TROJAN_PANEL_CORE_DATA="/tpdata/trojan-panel-core/"
   TROJAN_PANEL_CORE_LOGS="${TROJAN_PANEL_CORE_DATA}logs/"
   TROJAN_PANEL_CORE_CONFIG="${TROJAN_PANEL_CORE_DATA}config/"
@@ -103,9 +103,9 @@ init_var() {
   trojan_panel_core_latest_version="v2.1.1"
 
   # SQL
-  sql_200="alter table \`system\` add template_config varchar(512) default '' not null comment '模板设置' after email_config;update \`system\` set template_config = \"{\\\"systemName\\\":\\\"Trojan Panel\\\"}\" where name = \"trojan-panel\";insert into \`casbin_rule\` values ('p','sysadmin','/api/nodeServer/nodeServerState','GET','','','');insert into \`casbin_rule\` values ('p','user','/api/node/selectNodeInfo','GET','','','');insert into \`casbin_rule\` values ('p','sysadmin','/api/node/selectNodeInfo','GET','','','');"
-  sql_203="alter table node add node_server_grpc_port int(10) unsigned default 8100 not null comment 'gRPC端口' after node_server_ip;alter table node_server add grpc_port int(10) unsigned default 8100 not null comment 'gRPC端口' after name;alter table node_xray add xray_flow varchar(32) default 'xtls-rprx-vision' not null comment 'Xray流控' after protocol;alter table node_xray add xray_ss_method varchar(32) default 'aes-256-gcm' not null comment 'Xray Shadowsocks加密方式' after xray_flow;"
-  sql_205="DROP TABLE IF EXISTS \`file_task\`;CREATE TABLE \`file_task\` ( \`id\` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增主键', \`name\` varchar(64) NOT NULL DEFAULT '' COMMENT '文件名称', \`path\` varchar(128) NOT NULL DEFAULT '' COMMENT '文件路径', \`type\` tinyint(2) unsigned NOT NULL DEFAULT '1' COMMENT '类型 1/用户导入 2/服务器导入 3/用户导出 4/服务器导出', \`status\` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态 -1/失败 0/等待 1/正在执行 2/成功', \`err_msg\` varchar(128) NOT NULL DEFAULT '' COMMENT '错误信息', \`account_id\` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '账户id', \`account_username\` varchar(64) NOT NULL DEFAULT '' COMMENT '账户登录用户名', \`create_time\` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间', \`update_time\` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间', PRIMARY KEY (\`id\`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文件任务';INSERT INTO trojan_panel_db.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/account/exportAccount', 'POST', '', '', '');INSERT INTO trojan_panel_db.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/account/importAccount', 'POST', '', '', '');INSERT INTO trojan_panel_db.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/system/uploadLogo', 'POST', '', '', '');INSERT INTO trojan_panel_db.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/nodeServer/exportNodeServer', 'POST', '', '', '');INSERT INTO trojan_panel_db.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/nodeServer/importNodeServer', 'POST', '', '', '');INSERT INTO trojan_panel_db.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/fileTask/selectFileTaskPage', 'GET', '', '', '');INSERT INTO trojan_panel_db.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/fileTask/deleteFileTaskById', 'POST', '', '', '');INSERT INTO trojan_panel_db.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/fileTask/downloadFileTask', 'POST', '', '', '');INSERT INTO trojan_panel_db.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/fileTask/downloadCsvTemplate', 'POST', '', '', '');"
+  sql_200="alter table \`system\` add template_config varchar(512) default '' not null comment 'Template settings' after email_config;update \`system\` set template_config = \"{\\\"systemName\\\":\\\"Trojan Panel\\\"}\" where name = \"trojan-panel\";insert into \`casbin_rule\` values ('p','sysadmin','/api/nodeServer/nodeServerState','GET','','','');insert into \`casbin_rule\` values ('p','user','/api/node/selectNodeInfo','GET','','','');insert into \`casbin_rule\` values ('p','sysadmin','/api/node/selectNodeInfo','GET','','','');"
+  sql_203="alter table node add node_server_grpc_port int(10) unsigned default 8100 not null comment 'gRPC端口' after node_server_ip;alter table node_server add grpc_port int(10) unsigned default 8100 not null comment 'gRPC port' after name;alter table node_xray add xray_flow varchar(32) default 'xtls-rprx-vision' not null comment 'Xray流控' after protocol;alter table node_xray add xray_ss_method varchar(32) default 'aes-256-gcm' not null comment 'Xray Shadowsocks加密方式' after xray_flow;"
+  sql_205="DROP TABLE IF EXISTS \`file_task\`;CREATE TABLE \`file_task\` ( \`id\` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增主键', \`name\` varchar(64) NOT NULL DEFAULT '' COMMENT '文件名称', \`path\` varchar(128) NOT NULL DEFAULT '' COMMENT 'file path', \`type\` tinyint(2) unsigned NOT NULL DEFAULT '1' COMMENT ' type  1/ user import  2/ Server import  3/User export 4/服务器导出', \`status\` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'status -1/fail 0/等待 1/正在执行 2/成功', \`err_msg\` varchar(128) NOT NULL DEFAULT '' COMMENT '错误信息', \`account_id\` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '账户id', \`account_username\` varchar(64) NOT NULL DEFAULT '' COMMENT '账户登录用户名', \`create_time\` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间', \`update_time\` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间', PRIMARY KEY (\`id\`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文件任务';INSERT INTO trojan_panel_db.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/account/exportAccount', 'POST', '', '', '');INSERT INTO trojan_panel_db.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/account/importAccount', 'POST', '', '', '');INSERT INTO trojan_panel_db.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/system/uploadLogo', 'POST', '', '', '');INSERT INTO trojan_panel_db.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/nodeServer/exportNodeServer', 'POST', '', '', '');INSERT INTO trojan_panel_db.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/nodeServer/importNodeServer', 'POST', '', '', '');INSERT INTO trojan_panel_db.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/fileTask/selectFileTaskPage', 'GET', '', '', '');INSERT INTO trojan_panel_db.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/fileTask/deleteFileTaskById', 'POST', '', '', '');INSERT INTO trojan_panel_db.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/fileTask/downloadFileTask', 'POST', '', '', '');INSERT INTO trojan_panel_db.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/fileTask/downloadCsvTemplate', 'POST', '', '', '');"
   sql_210="UPDATE casbin_rule SET v1 = '/api/fileTask/downloadTemplate' WHERE v1 = '/api/fileTask/downloadCsvTemplate';UPDATE casbin_rule SET v1 = '/api/account/updateAccountPass' WHERE v1 = '/api/account/updateAccountProfile';INSERT INTO casbin_rule (p_type, v0, v1, v2) VALUES ('p', 'sysadmin', '/api/account/updateAccountProperty', 'POST');INSERT INTO casbin_rule (p_type, v0, v1, v2) VALUES ('p', 'user', '/api/account/updateAccountProperty', 'POST');alter table node_xray modify settings varchar(1024) default '' not null comment 'settings';alter table node_xray modify stream_settings varchar(1024) default '' not null comment 'streamSettings';alter table node_xray add reality_pbk varchar(64) default '' not null comment 'reality的公钥' after xray_ss_method;alter table node_hysteria add obfs varchar(64) default '' not null comment '混淆密码' after protocol;"
   sql_211="UPDATE \`system\` SET account_config = '{\"registerEnable\":1,\"registerQuota\":0,\"registerExpireDays\":0,\"resetDownloadAndUploadMonth\":0,\"trafficRankEnable\":1,\"captchaEnable\":0}' WHERE name = 'trojan-panel';INSERT INTO casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/node/nodeDefault', 'GET', '', '', '');INSERT INTO casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'user', '/api/node/nodeDefault', 'GET', '', '', '');"
   sql_212="alter table account add validity_period int unsigned default 0 not null comment '账户有效期' after email;alter table account add last_login_time bigint unsigned default 0 not null comment '最后一次登录时间' after validity_period;update account set last_login_time = unix_timestamp(NOW()) * 1000 where last_login_time = 0;INSERT INTO casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/account/createAccountBatch', 'POST', '', '', '');INSERT INTO casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', 'sysadmin', '/api/account/exportAccountUnused', 'POST', '', '', '');"
@@ -138,7 +138,7 @@ echo_content() {
 }
 
 mkdir_tools() {
-  # 项目目录
+  # project directory
   mkdir -p ${TP_DATA}
 
   # web
@@ -163,17 +163,17 @@ mkdir_tools() {
   # Redis
   mkdir -p ${REDIS_DATA}
 
-  # Trojan Panel前端
+  # Trojan Panel Fron-tend
   mkdir -p ${TROJAN_PANEL_UI_DATA}
   # # Nginx
   mkdir -p ${UI_NGINX_DATA}
   touch ${UI_NGINX_CONFIG}
 
-  # Trojan Panel后端
+  # Trojan Panel back-tend
   mkdir -p ${TROJAN_PANEL_DATA}
   mkdir -p ${TROJAN_PANEL_LOGS}
 
-  # Trojan Panel内核
+  # Trojan Panel kernel
   mkdir -p ${TROJAN_PANEL_CORE_DATA}
   mkdir -p ${TROJAN_PANEL_CORE_LOGS}
 }
@@ -193,11 +193,11 @@ get_ini_value() {
   local section=""
   local section_flag=0
 
-  # 拆分组名和键名
+  # Disassembling group name and key name
   IFS='.' read -r group_name key_name <<<"$key"
 
   while IFS='=' read -r name val; do
-    # 处理节名称
+    # processing section name
     if [[ $name =~ ^\[(.*)\]$ ]]; then
       section="${BASH_REMATCH[1]}"
       if [[ $section == $group_name ]]; then
@@ -228,7 +228,7 @@ check_sys() {
   fi
 
   if [[ -z "${package_manager}" ]]; then
-    echo_content red "暂不支持该系统"
+    echo_content red "The system is not currently supported"
     exit 0
   fi
 
@@ -250,7 +250,7 @@ check_sys() {
   fi
 
   if [[ -z "${get_arch}" ]]; then
-    echo_content red "仅支持amd64/arm64/arm/s390x处理器架构"
+    echo_content red "仅支持amd64/arm64/arm/s390x processor architecture"
     exit 0
   fi
 
@@ -270,22 +270,22 @@ depend_install() {
     systemd
 }
 
-# 安装Docker
+# Install Docker
 install_docker() {
   if [[ ! $(docker -v 2>/dev/null) ]]; then
-    echo_content green "---> 安装Docker"
+    echo_content green "---> Install Docker"
 
-    # 关闭防火墙
+    #  turn off 防火墙
     if [[ "$(firewall-cmd --state 2>/dev/null)" == "running" ]]; then
       systemctl stop firewalld.service && systemctl disable firewalld.service
     fi
 
-    # 时区
+    # Time zone
     timedatectl set-timezone Asia/Shanghai
 
     if [[ ${can_google} == 0 ]]; then
       sh <(curl -sL https://get.docker.com) --mirror Aliyun
-      # 设置Docker国内源
+      # Set Docker local source
       mkdir -p /etc/docker &&
         cat >/etc/docker/daemon.json <<EOF
 {
@@ -315,43 +315,43 @@ EOF
       systemctl restart docker
 
     if [[ $(docker -v 2>/dev/null) ]]; then
-      echo_content skyBlue "---> Docker安装完成"
+      echo_content skyBlue "---> DockerThe installation is complete"
     else
-      echo_content red "---> Docker安装失败"
+      echo_content red "---> The installation is failed "
       exit 0
     fi
   else
-    echo_content skyBlue "---> 你已经安装了Docker"
+    echo_content skyBlue "---> You have installed Docker"
   fi
 }
 
-# 安装Caddy2
+# 
 install_caddy2() {
   if [[ -z $(docker ps -a -q -f "name=^trojan-panel-caddy$") ]]; then
-    echo_content green "---> 安装Caddy2"
+    echo_content green "---> Install Caddy2"
 
     wget --no-check-certificate -O ${WEB_PATH}html.tar.gz -N ${STATIC_HTML} &&
       tar -zxvf ${WEB_PATH}html.tar.gz -k -C ${WEB_PATH}
 
-    read -r -p "请输入Caddy的端口(默认:80): " caddy_port
+    read -r -p "Please enter the port of Caddy(default:80): " caddy_port
     [[ -z "${caddy_port}" ]] && caddy_port=80
-    read -r -p "请输入Caddy的转发端口(默认:8863): " caddy_remote_port
+    read -r -p "Please enter Caddy Forwarding port of(default:8863): " caddy_remote_port
     [[ -z "${caddy_remote_port}" ]] && caddy_remote_port=8863
 
-    echo_content yellow "提示：请确认域名已经解析到本机 否则可能安装失败"
-    while read -r -p "请输入你的域名(必填): " domain; do
+    echo_content yellow "hint：Please confirm that the domain name has been resolved to this machine, otherwise the installation may fail"
+    while read -r -p "Please enter Your domain name (required): " domain; do
       if [[ -z "${domain}" ]]; then
-        echo_content red "域名不能为空"
+        echo_content red "Domain name cannot be empty"
       else
         break
       fi
     done
 
-    read -r -p "请输入你的邮箱(可选): " your_email
+    read -r -p "Please enter your mailbox(optional): " your_email
 
-    while read -r -p "please choose设置证书的方式?(1/自动申请和续签证书 2/手动设置证书路径 默认:1/自动申请和续签证书): " ssl_option; do
+    while read -r -p "please chooseHow to set a certificate? (1/Automatic application and renewal certificate 2/Manually set the certificate path default:1/Automatic application and renewal certificate): " ssl_option; do
       if [[ -z ${ssl_option} || ${ssl_option} == 1 ]]; then
-        while read -r -p "please choose申请证书的方式(1/acme 2/zerossl 默认:1/acme): " ssl_module_type; do
+        while read -r -p "please choose How to apply for a certificate(1/acme 2/zerossl default:1/acme): " ssl_module_type; do
           if [[ -z "${ssl_module_type}" || ${ssl_module_type} == 1 ]]; then
             ssl_module="acme"
             CADDY_CERT_DIR="${CERT_PATH}certificates/acme-v02.api.letsencrypt.org-directory/"
@@ -361,7 +361,7 @@ install_caddy2() {
             CADDY_CERT_DIR="${CERT_PATH}certificates/acme.zerossl.com-v2-dv90/"
             break
           else
-            echo_content red "不可以输入除1和2之外的其他字符"
+            echo_content red "Cannot enter other characters except 1 and 2"
           fi
         done
 
@@ -622,7 +622,7 @@ EOF
 EOF
         break
       else
-        echo_content red "不可以输入除1和2之外的其他字符"
+        echo_content red "Cannot enter other characters except 1 and 2"
       fi
     done
 
@@ -643,30 +643,30 @@ EOF
       cat >${DOMAIN_FILE} <<EOF
 ${domain}
 EOF
-      echo_content skyBlue "---> Caddy安装完成"
+      echo_content skyBlue "---> CaddyThe installation is complete"
     else
-      echo_content red "---> Caddy安装失败或Run abnormally,请尝试修复或Uninstall 重装"
+      echo_content red "---> CaddyInstall fail or Run abnormally, Please try to repair or Uninstall reinstall"
       exit 0
     fi
   else
-    echo_content skyBlue "---> 你已经安装了Caddy"
+    echo_content skyBlue "---> You have already Install Caddy"
   fi
 }
 
-# 安装Nginx
+# Install Nginx
 install_nginx() {
   if [[ -z $(docker ps -a -q -f "name=^trojan-panel-nginx$") ]]; then
-    echo_content green "---> 安装Nginx"
+    echo_content green "---> Install Nginx"
 
     wget --no-check-certificate -O ${WEB_PATH}html.tar.gz -N ${STATIC_HTML} &&
       tar -zxvf ${WEB_PATH}html.tar.gz -k -C ${WEB_PATH}
 
-    read -r -p "请输入Nginx的端口(默认:80): " nginx_port
+    read -r -p "Please enter Nginx port (default:80): " nginx_port
     [[ -z "${nginx_port}" ]] && nginx_port=80
-    read -r -p "请输入Nginx的转发端口(默认:8863): " nginx_remote_port
+    read -r -p "Please enter NginxForwarding port of(default:8863): " nginx_remote_port
     [[ -z "${nginx_remote_port}" ]] && nginx_remote_port=8863
 
-    while read -r -p "please chooseNginx是否开启https?(0/关闭 1/开启 默认:1/开启): " nginx_https; do
+    while read -r -p "please chooseNginxWhether to open https?(0/ turn off  1/ turn on  default:1/ turn on ): " nginx_https; do
       if [[ -z ${nginx_https} || ${nginx_https} == 1 ]]; then
         install_custom_cert "custom_cert"
         domain=$(cat "${DOMAIN_FILE}")
@@ -688,11 +688,11 @@ server {
     ssl_certificate_key  ${CERT_PATH}${domain}.key;
     #缓存有效期
     ssl_session_timeout  5m;
-    #安全链接可选的加密协议
+    #Encryption protocol for secure link optional
     ssl_protocols  TLSv1.3;
-    #加密算法
+    #Encryption Algorithm
     ssl_ciphers  ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
-    #使用服务器端的首选算法
+    #Use server-side preferred algorithm
     ssl_prefer_server_ciphers  on;
 
     #access_log  /var/log/nginx/host.access.log  main;
@@ -717,7 +717,7 @@ EOF
         break
       else
         if [[ ${nginx_https} != 0 ]]; then
-          echo_content red "不可以输入除0和1之外的其他字符"
+          echo_content red "No characters other than 0 and 1 can be entered"
         else
           cat >${NGINX_CONFIG} <<-EOF
 server {
@@ -751,13 +751,13 @@ EOF
         nginx:1.20-alpine
 
     if [[ -n $(docker ps -q -f "name=^trojan-panel-nginx$" -f "status=running") ]]; then
-      echo_content skyBlue "---> Nginx安装完成"
+      echo_content skyBlue "---> NginxThe installation is complete"
     else
-      echo_content red "---> Nginx安装失败或Run abnormally,请尝试修复或Uninstall 重装"
+      echo_content red "---> NginxInstall fail or Run abnormally, Please try to repair  or Uninstall reinstall"
       exit 0
     fi
   else
-    echo_content skyBlue "---> 你已经安装了Nginx"
+    echo_content skyBlue "---> 你已经Install 了Nginx"
   fi
 }
 
@@ -767,10 +767,10 @@ install_reverse_proxy() {
     echo_content green "---> 设置伪装Web"
 
     while :; do
-      echo_content yellow "1. 安装Caddy 2（推荐）"
-      echo_content yellow "2. 安装Nginx"
+      echo_content yellow "1. Install Caddy 2（推荐）"
+      echo_content yellow "2. Install Nginx"
       echo_content yellow "3. 不设置"
-      read -r -p "please choose(默认:1): " whether_install_reverse_proxy
+      read -r -p "please choose(default:1): " whether_install_reverse_proxy
       [[ -z "${whether_install_reverse_proxy}" ]] && whether_install_reverse_proxy=1
 
       case ${whether_install_reverse_proxy} in
@@ -797,7 +797,7 @@ install_reverse_proxy() {
 }
 
 install_custom_cert() {
-  while read -r -p "请输入证书的.crt文件路径(必填): " crt_path; do
+  while read -r -p "Please enter 证书的.crt文件路径(required): " crt_path; do
     if [[ -z "${crt_path}" ]]; then
       echo_content red "路径不能为空"
     else
@@ -809,7 +809,7 @@ install_custom_cert() {
       fi
     fi
   done
-  while read -r -p "请输入证书的.key文件路径(必填): " key_path; do
+  while read -r -p "Please enter 证书的.key文件路径(required): " key_path; do
     if [[ -z "${key_path}" ]]; then
       echo_content red "路径不能为空"
     else
@@ -833,10 +833,10 @@ install_cert() {
     echo_content green "---> 设置证书"
 
     while :; do
-      echo_content yellow "1. 安装Caddy 2（自动申请/续签证书）"
+      echo_content yellow "1. Install Caddy 2（自动申请/续签证书）"
       echo_content yellow "2. 手动设置证书路径"
       echo_content yellow "3. 不设置"
-      read -r -p "please choose(默认:1): " whether_install_cert
+      read -r -p "please choose(default:1): " whether_install_cert
       [[ -z "${whether_install_cert}" ]] && whether_install_cert=1
 
       case ${whether_install_cert} in
@@ -862,18 +862,18 @@ install_cert() {
   fi
 }
 
-# 安装MariaDB
+# Install MariaDB
 install_mariadb() {
   if [[ -z $(docker ps -a -q -f "name=^trojan-panel-mariadb$") ]]; then
-    echo_content green "---> 安装MariaDB"
+    echo_content green "---> Install MariaDB"
 
-    read -r -p "请输入数据库的端口(默认:9507): " mariadb_port
+    read -r -p "Please enter 数据库 port (default:9507): " mariadb_port
     [[ -z "${mariadb_port}" ]] && mariadb_port=9507
-    read -r -p "请输入数据库的用户名(默认:root): " mariadb_user
+    read -r -p "Please enter The user name of the database(default:root): " mariadb_user
     [[ -z "${mariadb_user}" ]] && mariadb_user="root"
-    while read -r -p "请输入数据库的密码(必填): " mariadb_pas; do
+    while read -r -p "Please enter database password(required): " mariadb_pas; do
       if [[ -z "${mariadb_pas}" ]]; then
-        echo_content red "密码不能为空"
+        echo_content red "password can not be blank"
       else
         break
       fi
@@ -906,30 +906,30 @@ install_mariadb() {
     fi
 
     if [[ -n $(docker ps -q -f "name=^trojan-panel-mariadb$" -f "status=running") ]]; then
-      echo_content skyBlue "---> MariaDB安装完成"
-      echo_content yellow "---> MariaDB root的数据库密码(请妥善保存): ${mariadb_pas}"
+      echo_content skyBlue "---> MariaDBThe installation is complete"
+      echo_content yellow "---> MariaDB root的数据库密码(please keep it safe): ${mariadb_pas}"
       if [[ "${mariadb_user}" != "root" ]]; then
-        echo_content yellow "---> MariaDB ${mariadb_user}的数据库密码(请妥善保存): ${mariadb_pas}"
+        echo_content yellow "---> MariaDB ${mariadb_user}的数据库密码(please keep it safe): ${mariadb_pas}"
       fi
     else
-      echo_content red "---> MariaDB安装失败或Run abnormally,请尝试修复或Uninstall 重装"
+      echo_content red "---> MariaDBInstall fail or Run abnormally, Please try to repair  or Uninstall reinstall"
       exit 0
     fi
   else
-    echo_content skyBlue "---> 你已经安装了MariaDB"
+    echo_content skyBlue "---> 你已经Install 了MariaDB"
   fi
 }
 
-# 安装Redis
+# Install Redis
 install_redis() {
   if [[ -z $(docker ps -a -q -f "name=^trojan-panel-redis$") ]]; then
-    echo_content green "---> 安装Redis"
+    echo_content green "---> Install Redis"
 
-    read -r -p "请输入Redis的端口(默认:6378): " redis_port
+    read -r -p "Please enter Redis port (default:6378): " redis_port
     [[ -z "${redis_port}" ]] && redis_port=6378
-    while read -r -p "请输入Redis的密码(必填): " redis_pass; do
+    while read -r -p "Please enter Redis的密码(required): " redis_pass; do
       if [[ -z "${redis_pass}" ]]; then
-        echo_content red "密码不能为空"
+        echo_content red "password can not be blank"
       else
         break
       fi
@@ -942,30 +942,30 @@ install_redis() {
         redis-server --requirepass "${redis_pass}" --port "${redis_port}"
 
     if [[ -n $(docker ps -q -f "name=^trojan-panel-redis$" -f "status=running") ]]; then
-      echo_content skyBlue "---> Redis安装完成"
-      echo_content yellow "---> Redis的数据库密码(请妥善保存): ${redis_pass}"
+      echo_content skyBlue "---> RedisThe installation is complete"
+      echo_content yellow "---> Redis database password (please keep it safe): ${redis_pass}"
     else
-      echo_content red "---> Redis安装失败或Run abnormally,请尝试修复或Uninstall 重装"
+      echo_content red "---> RedisInstall fail or Run abnormally, Please try to repair  or Uninstall reinstall"
       exit 0
     fi
   else
-    echo_content skyBlue "---> 你已经安装了Redis"
+    echo_content skyBlue "---> You are already install Redis"
   fi
 }
 
-# 安装Trojan Panel前端
+# Install Trojan Panel Fron-tend
 install_trojan_panel_ui() {
   if [[ -z $(docker ps -a -q -f "name=^trojan-panel-ui$") ]]; then
-    echo_content green "---> 安装Trojan Panel前端"
+    echo_content green "---> Install Trojan Panel Fron-tend"
 
-    read -r -p "请输入Trojan Panel后端的IP地址(默认:本机后端): " trojan_panel_ip
+    read -r -p "Please enter Trojan Panel IP address of the backend(default:local back-end ): " trojan_panel_ip
     [[ -z "${trojan_panel_ip}" ]] && trojan_panel_ip="127.0.0.1"
-    read -r -p "请输入Trojan Panel后端的服务端口(默认:8081): " trojan_panel_server_port
+    read -r -p "Please enter Trojan Panel backend service port(default:8081): " trojan_panel_server_port
     [[ -z "${trojan_panel_server_port}" ]] && trojan_panel_server_port=8081
 
-    read -r -p "请输入Trojan Panel前端端口(默认:8888): " trojan_panel_ui_port
+    read -r -p "Please enter Trojan Panel front-end port (default:8888): " trojan_panel_ui_port
     [[ -z "${trojan_panel_ui_port}" ]] && trojan_panel_ui_port="8888"
-    while read -r -p "please chooseTrojan Panel前端是否开启https?(0/关闭 1/开启 默认:1/开启): " ui_https; do
+    while read -r -p "please chooseTrojan Panel front-end Whether to open https?(0/ turn off  1/ turn on  default:1/ turn on ): " ui_https; do
       if [[ -z ${ui_https} || ${ui_https} == 1 ]]; then
         install_cert
         domain=$(cat "${DOMAIN_FILE}")
@@ -981,11 +981,11 @@ server {
     ssl_certificate_key  ${CERT_PATH}${domain}.key;
     #缓存有效期
     ssl_session_timeout  5m;
-    #安全链接可选的加密协议
+    #安全链接optional的加密协议
     ssl_protocols  TLSv1.3;
     #加密算法
     ssl_ciphers  ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
-    #使用服务器端的首选算法
+    #Use server-side preferred algorithm
     ssl_prefer_server_ciphers  on;
 
     #access_log  /var/log/nginx/host.access.log  main;
@@ -1014,7 +1014,7 @@ EOF
         break
       else
         if [[ ${ui_https} != 0 ]]; then
-          echo_content red "不可以输入除0和1之外的其他字符"
+          echo_content red "No characters other than 0 and 1 can be entered"
         else
           cat >${UI_NGINX_CONFIG} <<-EOF
 server {
@@ -1051,41 +1051,41 @@ EOF
         jonssonyan/trojan-panel-ui
 
     if [[ -n $(docker ps -q -f "name=^trojan-panel-ui$" -f "status=running") ]]; then
-      echo_content skyBlue "---> Trojan Panel前端安装完成"
+      echo_content skyBlue "---> Trojan Panel front-end The installation is complete"
 
       https_flag=$([[ -z ${ui_https} || ${ui_https} == 1 ]] && echo "https" || echo "http")
       domain_or_ip=$([[ -z ${domain} || "${domain}" == "custom_cert" ]] && echo "ip" || echo "${domain}")
 
       echo_content red "\n=============================================================="
-      echo_content skyBlue "Trojan Panel前端安装成功"
-      echo_content yellow "管理面板地址: ${https_flag}://${domain_or_ip}:${trojan_panel_ui_port}"
+      echo_content skyBlue "Trojan Panel front-end Install 成功"
+      echo_content yellow "Admin panel address: ${https_flag}://${domain_or_ip}:${trojan_panel_ui_port}"
       echo_content red "\n=============================================================="
     else
-      echo_content red "---> Trojan Panel前端安装失败或Run abnormally,请尝试修复或Uninstall 重装"
+      echo_content red "---> Trojan Panel front-end Install fail or Run abnormally, Please try to repair  or Uninstall reinstall"
       exit 0
     fi
   else
-    echo_content skyBlue "---> 你已经安装了Trojan Panel前端"
+    echo_content skyBlue "---> 你已经Install 了Trojan Panel Fron-tend"
   fi
 }
 
-# 安装Trojan Panel后端
+# Install Trojan Panel back-tend
 install_trojan_panel() {
   if [[ -z $(docker ps -a -q -f "name=^trojan-panel$") ]]; then
-    echo_content green "---> 安装Trojan Panel后端"
+    echo_content green "---> Install Trojan Panel back-tend"
 
-    read -r -p "请输入Trojan Panel后端的服务端口(默认:8081): " trojan_panel_port
+    read -r -p "Please enter Trojan Panel backend service port(default:8081): " trojan_panel_port
     [[ -z "${trojan_panel_port}" ]] && trojan_panel_port=8081
 
-    read -r -p "请输入数据库的IP地址(默认:本机数据库): " mariadb_ip
+    read -r -p "Please enter 数据库的IP地址(default:本机数据库): " mariadb_ip
     [[ -z "${mariadb_ip}" ]] && mariadb_ip="127.0.0.1"
-    read -r -p "请输入数据库的端口(默认:9507): " mariadb_port
+    read -r -p "Please enter 数据库 port (default:9507): " mariadb_port
     [[ -z "${mariadb_port}" ]] && mariadb_port=9507
-    read -r -p "请输入数据库的用户名(默认:root): " mariadb_user
+    read -r -p "Please enter The user name of the database(default:root): " mariadb_user
     [[ -z "${mariadb_user}" ]] && mariadb_user="root"
-    while read -r -p "请输入数据库的密码(必填): " mariadb_pas; do
+    while read -r -p "Please enter database password(required): " mariadb_pas; do
       if [[ -z "${mariadb_pas}" ]]; then
-        echo_content red "密码不能为空"
+        echo_content red "password can not be blank"
       else
         break
       fi
@@ -1093,13 +1093,13 @@ install_trojan_panel() {
 
     docker exec trojan-panel-mariadb mysql -h"${mariadb_ip}" -P"${mariadb_port}" -u"${mariadb_user}" -p"${mariadb_pas}" -e "create database if not exists trojan_panel_db;" &>/dev/null
 
-    read -r -p "请输入Redis的IP地址(默认:本机Redis): " redis_host
+    read -r -p "Please enter Redis的IP地址(default:本机Redis): " redis_host
     [[ -z "${redis_host}" ]] && redis_host="127.0.0.1"
-    read -r -p "请输入Redis的端口(默认:6378): " redis_port
+    read -r -p "Please enter Redis port (default:6378): " redis_port
     [[ -z "${redis_port}" ]] && redis_port=6378
-    while read -r -p "请输入Redis的密码(必填): " redis_pass; do
+    while read -r -p "Please enter Redis的密码(required): " redis_pass; do
       if [[ -z "${redis_pass}" ]]; then
-        echo_content red "密码不能为空"
+        echo_content red "password can not be blank"
       else
         break
       fi
@@ -1126,62 +1126,62 @@ install_trojan_panel() {
         jonssonyan/trojan-panel
 
     if [[ -n $(docker ps -q -f "name=^trojan-panel$" -f "status=running") ]]; then
-      echo_content skyBlue "---> Trojan Panel后端安装完成"
+      echo_content skyBlue "---> Trojan Panel后端The installation is complete"
 
       echo_content red "\n=============================================================="
-      echo_content skyBlue "Trojan Panel后端安装成功"
-      echo_content yellow "MariaDB ${mariadb_user}的密码(请妥善保存): ${mariadb_pas}"
-      echo_content yellow "Redis的密码(请妥善保存): ${redis_pass}"
+      echo_content skyBlue "Trojan Panel后端Install 成功"
+      echo_content yellow "MariaDB ${mariadb_user}的密码(please keep it safe): ${mariadb_pas}"
+      echo_content yellow "Redis的密码(please keep it safe): ${redis_pass}"
       echo_content yellow "系统管理员 默认用户名: sysadmin 默认密码: 123456 请及时登陆管理面板修改密码"
       echo_content yellow "Trojan Panel私钥和证书目录: ${CERT_PATH}"
       echo_content red "\n=============================================================="
     else
-      echo_content red "---> Trojan Panel后端安装失败或Run abnormally,请尝试修复或Uninstall 重装"
+      echo_content red "---> Trojan Panel后端Install fail or Run abnormally, Please try to repair  or Uninstall reinstall"
       exit 0
     fi
   else
-    echo_content skyBlue "---> 你已经安装了Trojan Panel后端"
+    echo_content skyBlue "---> 你已经Install 了Trojan Panel back-tend"
   fi
 }
 
-# 安装Trojan Panel内核
+# Install Trojan Panel kernel
 install_trojan_panel_core() {
   if [[ -z $(docker ps -a -q -f "name=^trojan-panel-core$") ]]; then
-    echo_content green "---> 安装Trojan Panel内核"
+    echo_content green "---> Install Trojan Panel kernel"
 
-    read -r -p "请输入Trojan Panel内核的服务端口(默认:8082): " trojan_panel_core_port
+    read -r -p "Please enter Trojan Panel内核的服务端口(default:8082): " trojan_panel_core_port
     [[ -z "${trojan_panel_core_port}" ]] && trojan_panel_core_port=8082
 
-    read -r -p "请输入数据库的IP地址(默认:本机数据库): " mariadb_ip
+    read -r -p "Please enter 数据库的IP地址(default:本机数据库): " mariadb_ip
     [[ -z "${mariadb_ip}" ]] && mariadb_ip="127.0.0.1"
-    read -r -p "请输入数据库的端口(默认:9507): " mariadb_port
+    read -r -p "Please enter 数据库 port (default:9507): " mariadb_port
     [[ -z "${mariadb_port}" ]] && mariadb_port=9507
-    read -r -p "请输入数据库的用户名(默认:root): " mariadb_user
+    read -r -p "Please enter The user name of the database(default:root): " mariadb_user
     [[ -z "${mariadb_user}" ]] && mariadb_user="root"
-    while read -r -p "请输入数据库的密码(必填): " mariadb_pas; do
+    while read -r -p "Please enter database password(required): " mariadb_pas; do
       if [[ -z "${mariadb_pas}" ]]; then
-        echo_content red "密码不能为空"
+        echo_content red "password can not be blank"
       else
         break
       fi
     done
-    read -r -p "请输入数据库名称(默认:trojan_panel_db): " database
+    read -r -p "Please enter 数据库名称(default:trojan_panel_db): " database
     [[ -z "${database}" ]] && database="trojan_panel_db"
-    read -r -p "请输入数据库的用户表名称(默认:account): " account_table
+    read -r -p "Please enter 数据库的用户表名称(default:account): " account_table
     [[ -z "${account_table}" ]] && account_table="account"
 
-    read -r -p "请输入Redis的IP地址(默认:本机Redis): " redis_host
+    read -r -p "Please enter Redis的IP地址(default:本机Redis): " redis_host
     [[ -z "${redis_host}" ]] && redis_host="127.0.0.1"
-    read -r -p "请输入Redis的端口(默认:6378): " redis_port
+    read -r -p "Please enter Redis port (default:6378): " redis_port
     [[ -z "${redis_port}" ]] && redis_port=6378
-    while read -r -p "请输入Redis的密码(必填): " redis_pass; do
+    while read -r -p "Please enter Redis的密码(required): " redis_pass; do
       if [[ -z "${redis_pass}" ]]; then
-        echo_content red "密码不能为空"
+        echo_content red "password can not be blank"
       else
         break
       fi
     done
-    read -r -p "请输入API的端口(默认:8100): " grpc_port
+    read -r -p "Please enter API port (default:8100): " grpc_port
     [[ -z "${grpc_port}" ]] && grpc_port=8100
 
     domain=$(cat "${DOMAIN_FILE}")
@@ -1214,13 +1214,13 @@ install_trojan_panel_core() {
         -e "server_port=${trojan_panel_core_port}" \
         jonssonyan/trojan-panel-core
     if [[ -n $(docker ps -q -f "name=^trojan-panel-core$" -f "status=running") ]]; then
-      echo_content skyBlue "---> Trojan Panel内核安装完成"
+      echo_content skyBlue "---> Trojan Panel内核The installation is complete"
     else
-      echo_content red "---> Trojan Panel内核安装失败或Run abnormally,请尝试修复或Uninstall 重装"
+      echo_content red "---> Trojan Panel内核Install fail or Run abnormally, Please try to repair  or Uninstall reinstall"
       exit 0
     fi
   else
-    echo_content skyBlue "---> 你已经安装了Trojan Panel内核"
+    echo_content skyBlue "---> 你已经Install 了Trojan Panel kernel"
   fi
 }
 
@@ -1285,9 +1285,9 @@ port=8081' >>${trojan_panel_config_path}
         jonssonyan/trojan-panel-ui
 
     if [[ -n $(docker ps -q -f "name=^trojan-panel-ui$" -f "status=running") ]]; then
-      echo_content skyBlue "---> Trojan Panel前端更新完成"
+      echo_content skyBlue "---> Trojan Panel front-end 更新完成"
     else
-      echo_content red "---> Trojan Panel前端更新失败或Run abnormally,请尝试修复或Uninstall 重装"
+      echo_content red "---> Trojan Panel front-end 更新fail or Run abnormally, Please try to repair  or Uninstall reinstall"
     fi
   fi
 
@@ -1323,11 +1323,11 @@ port=8082' >>${trojan_panel_core_config_path}
   echo_content skyBlue "---> Trojan Panel内核数据结构更新完成"
 }
 
-# 更新Trojan Panel前端
+# 更新Trojan Panel Fron-tend
 update_trojan_panel_ui() {
-  # 判断Trojan Panel前端是否安装
+  # 判断Trojan Panel front-end 是否Install 
   if [[ -z $(docker ps -a -q -f "name=^trojan-panel-ui$") ]]; then
-    echo_content red "---> 请先安装Trojan Panel前端"
+    echo_content red "---> 请先Install Trojan Panel Fron-tend"
     exit 0
   fi
 
@@ -1337,10 +1337,10 @@ update_trojan_panel_ui() {
     exit 0
   fi
 
-  echo_content yellow "提示：Trojan Panel前端(trojan-panel-ui)当前版本为 ${trojan_panel_ui_current_version} 最新版本为 ${trojan_panel_ui_latest_version}"
+  echo_content yellow "hint：Trojan Panel Fron-tend(trojan-panel-ui)当前版本为 ${trojan_panel_ui_current_version} 最新版本为 ${trojan_panel_ui_latest_version}"
 
   if [[ "${trojan_panel_ui_current_version}" != "${trojan_panel_ui_latest_version}" ]]; then
-    echo_content green "---> 更新Trojan Panel前端"
+    echo_content green "---> 更新Trojan Panel Fron-tend"
 
     docker rm -f trojan-panel-ui &&
       docker rmi -f jonssonyan/trojan-panel-ui
@@ -1353,20 +1353,20 @@ update_trojan_panel_ui() {
         jonssonyan/trojan-panel-ui
 
     if [[ -n $(docker ps -q -f "name=^trojan-panel-ui$" -f "status=running") ]]; then
-      echo_content skyBlue "---> Trojan Panel前端更新完成"
+      echo_content skyBlue "---> Trojan Panel front-end 更新完成"
     else
-      echo_content red "---> Trojan Panel前端更新失败或Run abnormally,请尝试修复或Uninstall 重装"
+      echo_content red "---> Trojan Panel front-end 更新fail or Run abnormally, Please try to repair  or Uninstall reinstall"
     fi
   else
-    echo_content skyBlue "---> 你安装的Trojan Panel前端已经是最新版"
+    echo_content skyBlue "---> 你Install 的Trojan Panel front-end 已经是最新版"
   fi
 }
 
-# 更新Trojan Panel后端
+# 更新Trojan Panel back-tend
 update_trojan_panel() {
-  # 判断Trojan Panel后端是否安装
+  # 判断Trojan Panel后端是否Install 
   if [[ -z $(docker ps -a -q -f "name=^trojan-panel$") ]]; then
-    echo_content red "---> 请先安装Trojan Panel后端"
+    echo_content red "---> 请先Install Trojan Panel back-tend"
     exit 0
   fi
 
@@ -1376,10 +1376,10 @@ update_trojan_panel() {
     exit 0
   fi
 
-  echo_content yellow "提示：Trojan Panel后端(trojan-panel)当前版本为 ${trojan_panel_current_version} 最新版本为 ${trojan_panel_latest_version}"
+  echo_content yellow "hint：Trojan Panel back-tend(trojan-panel)当前版本为 ${trojan_panel_current_version} 最新版本为 ${trojan_panel_latest_version}"
 
   if [[ "${trojan_panel_current_version}" != "${trojan_panel_latest_version}" ]]; then
-    echo_content green "---> 更新Trojan Panel后端"
+    echo_content green "---> 更新Trojan Panel back-tend"
 
     update__trojan_panel_database
 
@@ -1418,18 +1418,18 @@ update_trojan_panel() {
     if [[ -n $(docker ps -q -f "name=^trojan-panel$" -f "status=running") ]]; then
       echo_content skyBlue "---> Trojan Panel后端更新完成"
     else
-      echo_content red "---> Trojan Panel后端更新失败或Run abnormally,请尝试修复或Uninstall 重装"
+      echo_content red "---> Trojan Panel后端更新fail or Run abnormally, Please try to repair  or Uninstall reinstall"
     fi
   else
-    echo_content skyBlue "---> 你安装的Trojan Panel后端已经是最新版"
+    echo_content skyBlue "---> 你Install 的Trojan Panel后端已经是最新版"
   fi
 }
 
-# 更新Trojan Panel内核
+# 更新Trojan Panel kernel
 update_trojan_panel_core() {
-  # 判断Trojan Panel内核是否安装
+  # 判断Trojan Panel内核是否Install 
   if [[ -z $(docker ps -a -q -f "name=^trojan-panel-core$") ]]; then
-    echo_content red "---> 请先安装Trojan Panel内核"
+    echo_content red "---> 请先Install Trojan Panel kernel"
     exit 0
   fi
 
@@ -1439,10 +1439,10 @@ update_trojan_panel_core() {
     exit 0
   fi
 
-  echo_content yellow "提示：Trojan Panel内核(trojan-panel-core)当前版本为 ${trojan_panel_core_current_version} 最新版本为 ${trojan_panel_core_latest_version}"
+  echo_content yellow "hint：Trojan Panel kernel(trojan-panel-core)当前版本为 ${trojan_panel_core_current_version} 最新版本为 ${trojan_panel_core_latest_version}"
 
   if [[ "${trojan_panel_core_current_version}" != "${trojan_panel_core_latest_version}" ]]; then
-    echo_content green "---> 更新Trojan Panel内核"
+    echo_content green "---> 更新Trojan Panel kernel"
 
     update__trojan_panel_core_database
 
@@ -1494,16 +1494,16 @@ update_trojan_panel_core() {
     if [[ -n $(docker ps -q -f "name=^trojan-panel-core$" -f "status=running") ]]; then
       echo_content skyBlue "---> Trojan Panel内核更新完成"
     else
-      echo_content red "---> Trojan Panel内核更新失败或Run abnormally,请尝试修复或Uninstall 重装"
+      echo_content red "---> Trojan Panel内核更新fail or Run abnormally, Please try to repair  or Uninstall reinstall"
     fi
   else
-    echo_content skyBlue "---> 你安装的Trojan Panel内核已经是最新版"
+    echo_content skyBlue "---> 你Install 的Trojan Panel内核已经是最新版"
   fi
 }
 
 # Uninstall Caddy2
 uninstall_caddy2() {
-  # 判断Caddy2是否安装
+  # 判断Caddy2是否Install 
   if [[ -n $(docker ps -a -q -f "name=^trojan-panel-caddy$") ]]; then
     echo_content green "---> Uninstall Caddy2"
 
@@ -1512,13 +1512,13 @@ uninstall_caddy2() {
 
     echo_content skyBlue "---> Caddy2Uninstall 完成"
   else
-    echo_content red "---> 请先安装Caddy2"
+    echo_content red "---> 请先Install Caddy2"
   fi
 }
 
 # Uninstall Nginx
 uninstall_nginx() {
-  # 判断Caddy2是否安装
+  # 判断Caddy2是否Install 
   if [[ -n $(docker ps -a -q -f "name=^trojan-panel-nginx") ]]; then
     echo_content green "---> Uninstall Nginx"
 
@@ -1527,13 +1527,13 @@ uninstall_nginx() {
 
     echo_content skyBlue "---> NginxUninstall 完成"
   else
-    echo_content red "---> 请先安装Nginx"
+    echo_content red "---> 请先Install Nginx"
   fi
 }
 
 # Uninstall MariaDB
 uninstall_mariadb() {
-  # 判断MariaDB是否安装
+  # 判断MariaDB是否Install 
   if [[ -n $(docker ps -a -q -f "name=^trojan-panel-mariadb$") ]]; then
     echo_content green "---> Uninstall MariaDB"
 
@@ -1542,13 +1542,13 @@ uninstall_mariadb() {
 
     echo_content skyBlue "---> MariaDBUninstall 完成"
   else
-    echo_content red "---> 请先安装MariaDB"
+    echo_content red "---> 请先Install MariaDB"
   fi
 }
 
 # Uninstall Redis
 uninstall_redis() {
-  # 判断Redis是否安装
+  # 判断Redis是否Install 
   if [[ -n $(docker ps -a -q -f "name=^trojan-panel-redis$") ]]; then
     echo_content green "---> Uninstall Redis"
 
@@ -1557,31 +1557,31 @@ uninstall_redis() {
 
     echo_content skyBlue "---> RedisUninstall 完成"
   else
-    echo_content red "---> 请先安装Redis"
+    echo_content red "---> 请先Install Redis"
   fi
 }
 
-# Uninstall Trojan Panel前端
+# Uninstall Trojan Panel Fron-tend
 uninstall_trojan_panel_ui() {
-  # 判断Trojan Panel前端是否安装
+  # 判断Trojan Panel front-end 是否Install 
   if [[ -n $(docker ps -a -q -f "name=^trojan-panel-ui$") ]]; then
-    echo_content green "---> Uninstall Trojan Panel前端"
+    echo_content green "---> Uninstall Trojan Panel Fron-tend"
 
     docker rm -f trojan-panel-ui &&
       docker rmi -f jonssonyan/trojan-panel-ui &&
       rm -rf ${TROJAN_PANEL_UI_DATA}
 
-    echo_content skyBlue "---> Trojan Panel前端Uninstall 完成"
+    echo_content skyBlue "---> Trojan Panel front-end Uninstall 完成"
   else
-    echo_content red "---> 请先安装Trojan Panel前端"
+    echo_content red "---> 请先Install Trojan Panel Fron-tend"
   fi
 }
 
-# Uninstall Trojan Panel后端
+# Uninstall Trojan Panel back-tend
 uninstall_trojan_panel() {
-  # 判断Trojan Panel后端是否安装
+  # 判断Trojan Panel后端是否Install 
   if [[ -n $(docker ps -a -q -f "name=^trojan-panel$") ]]; then
-    echo_content green "---> Uninstall Trojan Panel后端"
+    echo_content green "---> Uninstall Trojan Panel back-tend"
 
     docker rm -f trojan-panel &&
       docker rmi -f jonssonyan/trojan-panel &&
@@ -1589,15 +1589,15 @@ uninstall_trojan_panel() {
 
     echo_content skyBlue "---> Trojan Panel后端Uninstall 完成"
   else
-    echo_content red "---> 请先安装Trojan Panel后端"
+    echo_content red "---> 请先Install Trojan Panel back-tend"
   fi
 }
 
-# Uninstall Trojan Panel内核
+# Uninstall Trojan Panel kernel
 uninstall_trojan_panel_core() {
-  # 判断Trojan Panel内核是否安装
+  # 判断Trojan Panel内核是否Install 
   if [[ -n $(docker ps -a -q -f "name=^trojan-panel-core$") ]]; then
-    echo_content green "---> Uninstall Trojan Panel内核"
+    echo_content green "---> Uninstall Trojan Panel kernel"
 
     docker rm -f trojan-panel-core &&
       docker rmi -f jonssonyan/trojan-panel-core &&
@@ -1605,7 +1605,7 @@ uninstall_trojan_panel_core() {
 
     echo_content skyBlue "---> Trojan Panel内核Uninstall 完成"
   else
-    echo_content red "---> 请先安装Trojan Panel内核"
+    echo_content red "---> 请先Install Trojan Panel kernel"
   fi
 }
 
@@ -1620,10 +1620,10 @@ uninstall_all() {
   echo_content skyBlue "---> Uninstall 全部Trojan Panel相关的容器完成"
 }
 
-# 修改Trojan Panel前端端口
+# 修改Trojan Panel front-end 端口
 update_trojan_panel_ui_port() {
   if [[ -n $(docker ps -q -f "name=^trojan-panel-ui$" -f "status=running") ]]; then
-    echo_content green "---> 修改Trojan Panel前端端口"
+    echo_content green "---> 修改Trojan Panel front-end 端口"
 
     trojan_panel_ui_port=$(grep 'listen.*ssl' ${UI_NGINX_CONFIG} | awk '{print $2}')
     if [[ -z "${trojan_panel_ui_port}" ]]; then
@@ -1631,12 +1631,12 @@ update_trojan_panel_ui_port() {
       trojan_panel_ui_port=$(grep -oP 'listen\s+\K\d+' ${UI_NGINX_CONFIG} | awk 'NR==1')
     fi
     if [[ -z "${trojan_panel_ui_port}" ]]; then
-      echo_content red "---> 未查询到Trojan Panel前端的端口"
+      echo_content red "---> 未查询到Trojan Panel front-end  port "
       exit 0
     fi
-    echo_content yellow "提示：Trojan Panel前端(trojan-panel-ui)当前端口为 ${trojan_panel_ui_port}"
+    echo_content yellow "hint：Trojan Panel Fron-tend(trojan-panel-ui)当 front-end 口为 ${trojan_panel_ui_port}"
 
-    read -r -p "请输入Trojan Panel前端新端口(默认:8888): " trojan_panel_ui_port
+    read -r -p "Please enter Trojan Panel front-end 新端口(default:8888): " trojan_panel_ui_port
     [[ -z "${trojan_panel_ui_port}" ]] && trojan_panel_ui_port="8888"
 
     if [[ ${ui_https} == 0 ]]; then
@@ -1652,20 +1652,20 @@ update_trojan_panel_ui_port() {
     fi
 
     if [[ "$?" == "0" ]]; then
-      echo_content skyBlue "---> Trojan Panel前端端口修改完成"
+      echo_content skyBlue "---> Trojan Panel front-end 端口修改完成"
     else
-      echo_content red "---> Trojan Panel前端端口修改失败"
+      echo_content red "---> Trojan Panel front-end 端口修改fail"
     fi
   else
-    echo_content red "---> Trojan Panel前端未安装或Run abnormally,请修复或Uninstall 重装后重试"
+    echo_content red "---> Trojan Panel front-end 未Install  or Run abnormally,请修复 or Uninstall reinstall后重试"
   fi
 }
 
 # 刷新Redis缓存
 redis_flush_all() {
-  # 判断Redis是否安装
+  # 判断Redis是否Install 
   if [[ -z $(docker ps -a -q -f "name=^trojan-panel-redis$") ]]; then
-    echo_content red "---> 请先安装Redis"
+    echo_content red "---> 请先Install Redis"
     exit 0
   fi
 
@@ -1676,13 +1676,13 @@ redis_flush_all() {
 
   echo_content green "---> 刷新Redis缓存"
 
-  read -r -p "请输入Redis的IP地址(默认:本机Redis): " redis_host
+  read -r -p "Please enter Redis的IP地址(default:本机Redis): " redis_host
   [[ -z "${redis_host}" ]] && redis_host="127.0.0.1"
-  read -r -p "请输入Redis的端口(默认:6378): " redis_port
+  read -r -p "Please enter Redis port (default:6378): " redis_port
   [[ -z "${redis_port}" ]] && redis_port=6378
-  while read -r -p "请输入Redis的密码(必填): " redis_pass; do
+  while read -r -p "Please enter Redis的密码(required): " redis_pass; do
     if [[ -z "${redis_pass}" ]]; then
-      echo_content red "密码不能为空"
+      echo_content red "password can not be blank"
     else
       break
     fi
@@ -1733,7 +1733,7 @@ forget_pass() {
     echo_content yellow "2. 查询Redis密码"
     echo_content yellow "3. 重设管理面板系统管理员用户名和密码"
     echo_content yellow "4. 退出"
-    read -r -p "please choose(默认:4): " forget_pass_option
+    read -r -p "please choose(default:4): " forget_pass_option
     [[ -z "${forget_pass_option}" ]] && forget_pass_option=4
     case ${forget_pass_option} in
     1)
@@ -1741,33 +1741,33 @@ forget_pass() {
         mariadb_user=$(get_ini_value ${trojan_panel_config_path} mysql.user)
         mariadb_pas=$(get_ini_value ${trojan_panel_config_path} mysql.password)
         echo_content red "\n=============================================================="
-        echo_content yellow "MariaDB ${mariadb_user}的密码(请妥善保存): ${mariadb_pas}"
+        echo_content yellow "MariaDB ${mariadb_user}的密码(please keep it safe): ${mariadb_pas}"
         echo_content red "\n=============================================================="
       else
-        echo_content red "---> 请先安装Trojan Panel后端"
+        echo_content red "---> 请先Install Trojan Panel back-tend"
       fi
       ;;
     2)
       if [[ -n $(docker ps -a -q -f "name=^trojan-panel$") ]]; then
         redis_pass=$(get_ini_value ${trojan_panel_config_path} redis.password)
         echo_content red "\n=============================================================="
-        echo_content yellow "Redis的密码(请妥善保存): ${redis_pass}"
+        echo_content yellow "Redis的密码(please keep it safe): ${redis_pass}"
         echo_content red "\n=============================================================="
       else
-        echo_content red "---> 请先安装Trojan Panel后端"
+        echo_content red "---> 请先Install Trojan Panel back-tend"
       fi
       ;;
     3)
       if [[ -n $(docker ps -a -q -f "name=^trojan-panel-mariadb$") ]]; then
-        read -r -p "请输入数据库的IP地址(默认:本机数据库): " mariadb_ip
+        read -r -p "Please enter 数据库的IP地址(default:本机数据库): " mariadb_ip
         [[ -z "${mariadb_ip}" ]] && mariadb_ip="127.0.0.1"
-        read -r -p "请输入数据库的端口(默认:9507): " mariadb_port
+        read -r -p "Please enter 数据库 port (default:9507): " mariadb_port
         [[ -z "${mariadb_port}" ]] && mariadb_port=9507
-        read -r -p "请输入数据库的用户名(默认:root): " mariadb_user
+        read -r -p "Please enter The user name of the database(default:root): " mariadb_user
         [[ -z "${mariadb_user}" ]] && mariadb_user="root"
-        while read -r -p "请输入数据库的密码(必填): " mariadb_pas; do
+        while read -r -p "Please enter database password(required): " mariadb_pas; do
           if [[ -z "${mariadb_pas}" ]]; then
-            echo_content red "密码不能为空"
+            echo_content red "password can not be blank"
           else
             break
           fi
@@ -1779,10 +1779,10 @@ forget_pass() {
           echo_content yellow "系统管理员 默认用户名: sysadmin 默认密码: 123456 请及时登陆管理面板修改密码"
           echo_content red "\n=============================================================="
         else
-          echo_content red "管理面板系统管理员用户名和密码重设失败"
+          echo_content red "管理面板系统管理员用户名和密码重设fail"
         fi
       else
-        echo_content red "---> 请先安装MariaDB"
+        echo_content red "---> 请先Install MariaDB"
       fi
       ;;
     4)
@@ -1834,7 +1834,7 @@ failure_testing() {
       fi
     fi
     if [[ -n $(docker ps -a -q -f "name=^trojan-panel-ui$") && -z $(docker ps -q -f "name=^trojan-panel-ui$" -f "status=running") ]]; then
-      echo_content red "---> Trojan Panel前端Run abnormally 日志如下："
+      echo_content red "---> Trojan Panel front-end Run abnormally 日志如下："
       docker logs trojan-panel-ui
     fi
     if [[ -n $(docker ps -a -q -f "name=^trojan-panel-core$") && -z $(docker ps -q -f "name=^trojan-panel-core$" -f "status=running") ]]; then
@@ -1852,10 +1852,10 @@ failure_testing() {
 log_query() {
   while :; do
     echo_content skyBlue "可以查询日志的应用如下:"
-    echo_content yellow "1. Trojan Panel后端"
-    echo_content yellow "2. Trojan Panel内核"
+    echo_content yellow "1. Trojan Panel back-tend"
+    echo_content yellow "2. Trojan Panel kernel"
     echo_content yellow "3. 退出"
-    read -r -p "please choose应用(默认:1): " select_log_query_type
+    read -r -p "please choose应用(default:1): " select_log_query_type
     [[ -z "${select_log_query_type}" ]] && select_log_query_type=1
 
     case ${select_log_query_type} in
@@ -1874,7 +1874,7 @@ log_query() {
       ;;
     esac
 
-    read -r -p "请输入查询的行数(默认:20): " select_log_query_line_type
+    read -r -p "Please enter The number of queries(default:20): " select_log_query_line_type
     [[ -z "${select_log_query_line_type}" ]] && select_log_query_line_type=20
 
     if [[ -f ${log_file_path} ]]; then
@@ -1889,15 +1889,15 @@ log_query() {
 version_query() {
   if [[ -n $(docker ps -a -q -f "name=^trojan-panel-ui$") && -n $(docker ps -q -f "name=^trojan-panel-ui$" -f "status=running") ]]; then
     trojan_panel_ui_current_version=$(docker exec trojan-panel-ui cat ${TROJAN_PANEL_UI_DATA}version)
-    echo_content yellow "Trojan Panel前端(trojan-panel-ui)当前版本为 ${trojan_panel_ui_current_version} 最新版本为 ${trojan_panel_ui_latest_version}"
+    echo_content yellow "Trojan Panel Fron-tend(trojan-panel-ui)当前版本为 ${trojan_panel_ui_current_version} 最新版本为 ${trojan_panel_ui_latest_version}"
   fi
   if [[ -n $(docker ps -a -q -f "name=^trojan-panel$") && -n $(docker ps -q -f "name=^trojan-panel$" -f "status=running") ]]; then
     trojan_panel_current_version=$(docker exec trojan-panel ./trojan-panel -version)
-    echo_content yellow "Trojan Panel后端(trojan-panel)当前版本为 ${trojan_panel_current_version} 最新版本为 ${trojan_panel_latest_version}"
+    echo_content yellow "Trojan Panel back-tend(trojan-panel)当前版本为 ${trojan_panel_current_version} 最新版本为 ${trojan_panel_latest_version}"
   fi
   if [[ -n $(docker ps -a -q -f "name=^trojan-panel-core$") && -n $(docker ps -q -f "name=^trojan-panel-core$" -f "status=running") ]]; then
     trojan_panel_core_current_version=$(docker exec trojan-panel-core ./trojan-panel-core -version)
-    echo_content yellow "Trojan Panel内核(trojan-panel-core)当前版本为 ${trojan_panel_core_current_version} 最新版本为 ${trojan_panel_core_latest_version}"
+    echo_content yellow "Trojan Panel kernel(trojan-panel-core)当前版本为 ${trojan_panel_core_current_version} 最新版本为 ${trojan_panel_core_latest_version}"
   fi
 }
 
